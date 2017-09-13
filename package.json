@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-voting",
+  "version": "1.0.0",
+  "description": "poster making voting system",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xtranghero",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.18.0",
+    "cookie-session": "^1.3.1",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "mysql": "^2.14.1",
+    "promise": "^8.0.1",
+    "seneca": "^3.4.2"
+  }
+}
