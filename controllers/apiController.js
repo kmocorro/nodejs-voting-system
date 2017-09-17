@@ -100,8 +100,7 @@ module.exports = function (app){
 
         poolLocal.getConnection(function(err, connection){
 
-                if(req.body.employee_id){
-
+                    //  check employee number if exist
                     connection.query({
                         sql: 'SELECT IF(employee_id IS NULL,0,employee_id) AS employee_id, IF(poster_id IS NULL,0,poster_id) AS poster_id, IF(vote_value IS NULL, 0, vote_value) AS vote_value FROM tbl_vote_values WHERE employee_id=?',
                         values: [req.body.employee_id]
@@ -119,37 +118,49 @@ module.exports = function (app){
                         
                             if (obj.length > 0){
 
-                                if(req.body.poster_id!='0'){
+                                if (obj[0].vote_value == 0) {
 
-                                    if(obj[0].poster_id=='0'){
-                                        connection.query({
-                                            sql: 'UPDATE tbl_vote_values SET poster_id =?, vote_value = 1, date_time = ? WHERE employee_id = ?',
-                                            values: [req.body.poster_id, dateAndtime, req.body.employee_id]
-                                        },  function(err, results, fields){
-                                            
-                                        });
-                                        res.send('ok');
-                                        console.log(req.body.employee_id + ' has voted ' + req.body.poster_id +' at ' + date_time + '!');
-                                    }else{
-                                        res.send('Sorry, ' + obj[0].employee_id + ' has already voted');
-                                    }
+                                    connection.query({
+                                    sql: 'SELECT IF(poster_id IS NULL, 0, poster_id) AS poster_id FROM tbl_poster_details WHERE poster_id=?',
+                                        values: [req.body.poster_id]
+                                    },  function(err, results, fields){
+                                        
+                                        if(results.length > 0) {
+                                            // poster number exist in the database!
+                                            connection.query({
+                                                sql: '',
+                                                values: []
+                                            },  function(err, results, fields){
+
+                                            });
+
+                                                connection.query({
+                                                    sql: 'UPDATE tbl_vote_values SET poster_id =?, vote_value = 1, date_time = ? WHERE employee_id = ?',
+                                                    values: [req.body.poster_id, dateAndtime, req.body.employee_id]
+                                                },  function(err, results, fields){
+                                                   
+                                                    res.send('ok');
+                                                    console.log(req.body.employee_id + ' has voted ' + req.body.poster_id +' at ' + date_time + '!');
+                                                    
+                                                });
+
+                                        } else {
+                                            res.send('poster number does not exist');
+                                        }
+                                        
+                                    });
 
                                 } else {
-                                    res.send('poster number does not exist');
+                                    res.send('Sorry, ' + obj[0].employee_id + ' was already voted');
                                 }
-                                
-                                
+
                             } else {
-                                res.send('id number does not exist');
+                                    res.send('id number does not exist');
                             }
+
         
                     });
-        
-                } else {
 
-                    console.log('error! '+req.body.employee_id);
-        
-                }
             
         });
 
@@ -166,10 +177,12 @@ module.exports = function (app){
                 let obj = [];
 
                     for(let i=0; i < results.length; i++){
-                        obj.push({
-                            poster_id: md5(results[i].poster_id + 718),
-                            total_votes: results[i].total_votes
-                        });
+                        if(results[i].total_votes!==0){
+                            obj.push({
+                                poster_id: 'ID' + (results[i].poster_id * 718) ,
+                                total_votes: results[i].total_votes
+                            });
+                        }
                     }
                     
                 var json_obj = JSON.stringify(obj);
@@ -179,7 +192,7 @@ module.exports = function (app){
                     if(err) throw err;
                     console.log('done writefile' +tsv_obj);
                 });
-                
+                delete req.session.employee_id;
                 res.render('rankings');
                 
             });

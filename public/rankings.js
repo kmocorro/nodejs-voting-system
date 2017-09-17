@@ -19,11 +19,13 @@ var yAxis = d3.svg.axis()
 .orient("left")
 .tickFormat(formatPercent);
 
-var svg = d3.select("body").append("svg")
-.attr("width", width + margin.left + margin.right)
-.attr("height", height + margin.top + margin.bottom)
+var svg = d3.select("#svgGG")
+.append("svg")
+    .attr("class", "svgGraph")
+    .attr("viewBox", "0 0 1300 500")
 .append("g")
-.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", 
+          "translate("+60+","+10+")");
 
 d3.tsv("./rankings.tsv", function(error, data) {
 

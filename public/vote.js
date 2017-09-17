@@ -16,9 +16,9 @@ $('document').ready(function()
        messages:
 	   {
             poster_id:{
-                      required: "Choose the Best Poster :)"
+                      required: "Choose the number of the poster"
                      },
-            employee_id: "Enter your valid id number (ex. 12345)",
+            employee_id: "Enter your valid id number",
        },
 	   submitHandler: submitForm	
        });  

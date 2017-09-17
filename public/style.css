@@ -45,3 +45,84 @@ input[type="password"] {
   background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
 }
+
+.svgGraph {
+  display: inline-block;
+position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 10px;
+}
+
+.posterNum {
+  
+      background-color: #fff;
+      border-radius: 5px;
+      -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.25);
+      box-shadow: 0 1px 4px rgba(0,0,0,.25);
+      margin-bottom: 20px;
+      height: 100%;
+      padding: 0 15px 15px;
+      overflow: auto;
+      width: 100%;
+  }
+
+.section {
+  
+      background-color: #fff;
+      border-radius: 5px;
+      -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.25);
+      box-shadow: 0 1px 4px rgba(0,0,0,.25);
+      margin-bottom: 20px;
+      min-height: 150px;
+      padding: 7px 15px 15px;
+      overflow: auto;
+      margin-top:18px;
+      
+  }
+  
+  .sectionChart {
+  
+      background-color: #fff;
+      border-radius: 5px;
+      -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.25);
+      box-shadow: 0 1px 4px rgba(0,0,0,.25);
+      margin-bottom: 20px;
+      height: 100%;
+      padding: 0 15px 15px;
+      overflow: auto;
+      width: 100%;
+  }
+
+  .rankContainer {
+
+    max-width: 1440px;
+
+  }
+  
+  .axis text {
+    font: 18px sans-serif;
+  }
+  
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  
+  .bar {
+    fill: #62c2e4;
+    fill-opacity: .8;
+  }
+  
+  .x.axis path {
+    display: none;
+  }
+  
+  label { /*
+    position: absolute;
+    top: 10px;
+    right: 10px;*/
+  }
+  

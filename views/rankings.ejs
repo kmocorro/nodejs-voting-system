@@ -1,41 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
-<style>
 
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  position: relative;
-  width: 960px;
-}
-
-.axis text {
-  font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.bar {
-  fill: steelblue;
-  fill-opacity: .9;
-}
-
-.x.axis path {
-  display: none;
-}
-
-label {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-</style>
  <head>
   
       <meta charset="utf-8">
@@ -47,7 +13,7 @@ label {
   
       <!-- Bootstrap core CSS -->
       <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  
+      <link href="/style.css" rel="stylesheet">
       <!-- Custom styles for this template -->
       <link href="/vendor/css/thumbnail-gallery.css" rel="stylesheet">
   
@@ -73,14 +39,20 @@ label {
       </nav>
   
       <!-- Page Content -->
-      <div class="container">
+      <div class="rankContainer">
   
-        <h1 class="my-4 text-center text-lg-center">Poster Rankings</h1>
-        <div class="col-sm-12">
-        <label><input type="checkbox"> Sort values</label>
-        <script src="./d3/d3.min.js"></script>
-        <script src="./rankings.js"></script>
+        <h1 class="my-4 text-center text-lg-center">Poster Rankings</h1>      
+
+          <div class="col-md-20">
+            <div class=" sectionChart section" id="svgGG">
+                <label><input type="checkbox"> Sort values</label>
+                <script src="./d3/d3.min.js"></script>
+                <script src="./rankings.js"></script>
+            </div>
+          </div>
+
         </div>
+
         
       </div>
       <!-- /.container -->
